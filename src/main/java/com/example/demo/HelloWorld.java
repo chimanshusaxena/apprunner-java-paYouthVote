@@ -49,7 +49,7 @@ public class HelloWorld {
 
     @GetMapping("/")
     public String index() {
-        String s = "Hello Citi Teams from AWS App Runner. The JDK version is " + System.getProperty("java.version");
+        String s = "Hello CITI Teams from AWS App Runner. The JDK version is " + System.getProperty("java.version");
         return s;
     }
     
