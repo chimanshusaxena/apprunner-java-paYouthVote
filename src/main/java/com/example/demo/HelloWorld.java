@@ -75,32 +75,32 @@ public class HelloWorld {
     	
     	
 //    	  // Set up an alias for the partition key name in case it's a reserved word.
-        HashMap<String,String> attrNameAlias = new HashMap<String,String>();
-        attrNameAlias.put(partitionAlias, partitionKeyName);
+  //      HashMap<String,String> attrNameAlias = new HashMap<String,String>();
+ //       attrNameAlias.put(partitionAlias, partitionKeyName);
 //
 //        // Set up mapping of the partition name with the value.
         HashMap<String, AttributeValue> attrValues = new HashMap<>();
 //
-        attrValues.put(":"+partitionKeyName, AttributeValue.builder()
-            .s(partitionKeyVal)
-            .build());
+ //       attrValues.put(":"+partitionKeyName, AttributeValue.builder()
+//            .s(partitionKeyVal)
+//            .build());
 //
-        QueryRequest queryReq = QueryRequest.builder()
-            .tableName(tableName)
-            .keyConditionExpression(partitionAlias + " = :" + partitionKeyName)
-            .expressionAttributeNames(attrNameAlias)
-            .expressionAttributeValues(attrValues)
-            .build();
+ //       QueryRequest queryReq = QueryRequest.builder()
+ //           .tableName(tableName)
+//            .keyConditionExpression(partitionAlias + " = :" + partitionKeyName)
+  //          .expressionAttributeNames(attrNameAlias)
+   //         .expressionAttributeValues(attrValues)
+   //         .build();
 //   
-            QueryResponse response = ddb.query(queryReq);
-            System.out.println(response.count());
-    	ListTablesResponse response = null;
-            ListTablesRequest request = ListTablesRequest.builder().build();
-            response = ddb.listTables(request);
+    //        QueryResponse response = ddb.query(queryReq);
+   //         System.out.println(response.count());
+   // 	ListTablesResponse response = null;
+     //       ListTablesRequest request = ListTablesRequest.builder().build();
+      //      response = ddb.listTables(request);
             
             
-    	return response.tableNames();
-//    	return "Hello Dynamo";
+    	//return response.tableNames();
+  	return "Hello Dynamo";
     }
 
 }
