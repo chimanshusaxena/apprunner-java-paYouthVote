@@ -27,22 +27,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorld {
 	
     Region region = Region.US_EAST_1;
-    String bucketName = "citi-hackathon-test-647859";
+    String bucketName = "bucket-hackathon-welfare-warrior";
     
    // ProfileCredentialsProvider credentialsProvider = ProfileCredentialsProvider.create();
     S3Client s3 = S3Client.builder()
         .region(region)
-      //  .credentialsProvider(credentialsProvider)
+      	.credentialsProvider(credentialsProvider)
         .build();
     
-    String tableName = "Music";
+    String tableName = "pa_youth_vote";
     String partitionAlias = "#a";
-    String partitionKeyName = "Artist";
-    String partitionKeyVal = "AWS Band";
+    String partitionKeyName = "Team";
+    String partitionKeyVal = "AWS PaYouthVoter";
 
 	
 	DynamoDbClient ddb = DynamoDbClient.builder()
-           // .credentialsProvider(credentialsProvider)
+            .credentialsProvider(credentialsProvider)
             .region(region)
             .build();
 
