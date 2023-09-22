@@ -27,29 +27,30 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorld {
 	
     Region region = Region.US_EAST_1;
-    String bucketName = "bucket-hackathon-welfare-warrior";
+    String bucketName = "citi-hackathon-test-647859";
     
-   ProfileCredentialsProvider credentialsProvider = ProfileCredentialsProvider.create();
+   // ProfileCredentialsProvider credentialsProvider = ProfileCredentialsProvider.create();
     S3Client s3 = S3Client.builder()
         .region(region)
-      	.credentialsProvider(credentialsProvider)
+      //  .credentialsProvider(credentialsProvider)
         .build();
     
-    String tableName = "pa_youth_vote";
+    String tableName = "Music";
     String partitionAlias = "#a";
-    String partitionKeyName = "Team";
-    String partitionKeyVal = "AWS PaYouthVoter";
+    String partitionKeyName = "Artist";
+    String partitionKeyVal = "AWS Band";
 
 	
 	DynamoDbClient ddb = DynamoDbClient.builder()
-            .credentialsProvider(credentialsProvider)
+           // .credentialsProvider(credentialsProvider)
             .region(region)
             .build();
 
 
     @GetMapping("/")
     public String index() {
-        String s = "Hello CITI Welfare Warriors from AWS App Runner. The JDK version is " + System.getProperty("java.version");
+       // String s = "Hello CITI Teams from AWS App Runner. The JDK version is " + System.getProperty("java.version");
+	String s = "<h1> Hello PA Youth Voters from Welfare Warriors</h1>" ;
         return s;
     }
     
@@ -75,33 +76,32 @@ public class HelloWorld {
     	
     	
 //    	  // Set up an alias for the partition key name in case it's a reserved word.
-  //      HashMap<String,String> attrNameAlias = new HashMap<String,String>();
- //       attrNameAlias.put(partitionAlias, partitionKeyName);
+//        HashMap<String,String> attrNameAlias = new HashMap<String,String>();
+//        attrNameAlias.put(partitionAlias, partitionKeyName);
 //
 //        // Set up mapping of the partition name with the value.
-        HashMap<String, AttributeValue> attrValues = new HashMap<>();
+//        HashMap<String, AttributeValue> attrValues = new HashMap<>();
 //
- //       attrValues.put(":"+partitionKeyName, AttributeValue.builder()
+//        attrValues.put(":"+partitionKeyName, AttributeValue.builder()
 //            .s(partitionKeyVal)
 //            .build());
 //
- //       QueryRequest queryReq = QueryRequest.builder()
- //           .tableName(tableName)
+//        QueryRequest queryReq = QueryRequest.builder()
+//            .tableName(tableName)
 //            .keyConditionExpression(partitionAlias + " = :" + partitionKeyName)
-  //          .expressionAttributeNames(attrNameAlias)
-   //         .expressionAttributeValues(attrValues)
-   //         .build();
+//            .expressionAttributeNames(attrNameAlias)
+//            .expressionAttributeValues(attrValues)
+//            .build();
 //   
-    //        QueryResponse response = ddb.query(queryReq);
-   //         System.out.println(response.count());
-   // 	ListTablesResponse response = null;
-     //       ListTablesRequest request = ListTablesRequest.builder().build();
-      //      response = ddb.listTables(request);
+//            QueryResponse response = ddb.query(queryReq);
+//            System.out.println(response.count());
+    	ListTablesResponse response = null;
+            ListTablesRequest request = ListTablesRequest.builder().build();
+            response = ddb.listTables(request);
             
             
-    	//return response.tableNames();
-  	return "Hello Dynamo";
+    	return response.tableNames();
+//    	return "Hello Dynamo";
     }
 
 }
-
